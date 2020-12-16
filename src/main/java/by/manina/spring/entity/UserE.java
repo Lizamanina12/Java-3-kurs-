@@ -14,10 +14,10 @@ public class UserE {
     public UserE(){
 
     }
-    public UserE(String login , String password, RoleE roleEntity) {
+    public UserE(String login , String password ,String email, RoleE roleEntity) {
 
         this.login = login;
-
+        this.Email=email;
         this.password = password;
         this.roleEntity = roleEntity;
     }
@@ -31,6 +31,8 @@ public class UserE {
 
     @Column
     private String password;
+    @Column
+    private String Email ;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
@@ -41,7 +43,12 @@ public class UserE {
     public String getPassword() {
         return password;
     }
-
+    public String getEmail() {
+        return Email;
+    }
+    public void setEmail(String email) {
+        this.Email = email;
+    }
     public void setPassword(String password) {
         this.password = password;
     }
