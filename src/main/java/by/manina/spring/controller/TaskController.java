@@ -1,20 +1,14 @@
 package by.manina.spring.controller;
 
-import by.manina.spring.Exception.ControllerException;
 import by.manina.spring.entity.TaskE;
-import by.manina.spring.repository.TaskERepository;
 import by.manina.spring.service.TaskService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static java.awt.SystemColor.info;
 @Log4j2
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
