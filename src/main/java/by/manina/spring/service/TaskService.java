@@ -95,6 +95,22 @@ public class TaskService {
         }
         return result;
     }
+    public TaskE deleteTask(String name){
+        for (TaskE task :taskERepository.findAll()) {
+            if(task.getName_task().contains(name)){
 
+                taskERepository.delete(task);
+                return task;
+            }
+        }
+        return null;
+    }
+    public TaskE saveTask(String name,String comp){
+        TaskE taskE=new TaskE();
+        taskE.setName_task(name);
+        taskE.setCompleted(comp);
+
+        return taskERepository.save(taskE);
+    }
 
 }

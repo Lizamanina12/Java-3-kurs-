@@ -49,5 +49,31 @@ public class TaskController {
             }
 
         return new ServResponce(false,"Error",null);
+        @PostMapping("/apiAdmin/deleteTask")
+        public ServResponce deleteUser(@RequestBody DeleteReguest request) {
+            log.info("deleteTask");
+            String name = request.getName();
 
+            if (name != null) {
+                TaskE deleteTask = taskService.deleteTask(name);
+                return new ServResponce(true, "User is deleted", deleteTask);
+            } else {
+                return new ServResponce(false, "Null param", null);
+            }
+        }
+        @PostMapping("/apiAdmin/addContact")
+        public ServResponce addContact( @RequestBody @Validated newTaskRequest request) throws ControllerException {
+            log.info("addContact");
+            String name_task = request.getName_task();
+            String completed = request.getCompleted();
+
+            if (name_task != null && completed != null) {
+                TaskE task = taskService.saveTask(name_task, completed);
+                if (task != null) {
+                    return new ServResponce(true, "Successful", task);
+                } else{
+                    throw  new ControllerException("name task null");
+                }
+            } return new ServResponce(false,"ERROR",null);
+        }
 }
